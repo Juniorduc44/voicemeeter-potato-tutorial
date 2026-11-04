@@ -1,0 +1,55 @@
+Section: Cover
+Claim: Anyone can do this - one click per page, picture for every step.
+Source: verbatim request + parent tutorial.
+
+Section: The one idea
+Claim: Potato is a traffic controller; A is for your ears, B is for other people.
+Source: parent tutorial.
+
+Section: Step 1 Download
+Claim: Only vb-audio.com is safe; file Voicemeeter8Setup_v3130.zip, 72.2 MB, v3.1.3.0.
+Source: browser.search official VB-Audio page result.
+
+Section: Step 2 Install and restart
+Claim: Extract, Run as administrator, Install, then reboot - do not skip restart.
+Source: official VB-Audio installation line in search result.
+
+Section: Step 3 A1 headphones first
+Claim: Set A1 before anything else or you hear nothing; prefer WDM.
+Source: parent tutorial.
+
+Section: Step 4 Microphone Input 1
+Claim: Pick mic on Hardware Input 1; talking should make bars dance.
+Source: parent tutorial.
+
+Section: Step 5 Make Potato Windows default - Playback
+Claim: Win+R, mmsys.cpl, Playback tab, Voicemeeter Input VAIO = Set Default.
+Source: parent tutorial + search results.
+
+Section: Step 5 continued - Recording
+Claim: Recording tab, Voicemeeter Output VAIO = Set Default; names look backwards and that is correct.
+Source: parent tutorial.
+
+Section: Step 6 Golden routing
+Claim: Mic strip B1 on / A1 off; computer strip A1 on, B1 only to share.
+Source: parent tutorial.
+
+Section: Way 1 Everything together
+Claim: Day 1 method - one Windows default, one strip controls all computer sound.
+Source: parent tutorial.
+
+Section: Way 2 Split apps in Windows
+Claim: Volume mixer sends Game to VAIO, Discord to Aux, Music to VAIO3.
+Source: parent tutorial.
+
+Section: Way 3 Inside the app
+Claim: In Discord/Zoom/OBS set mic to Voicemeeter Output B1, speaker to Aux Input.
+Source: parent tutorial.
+
+Section: No-sound checklist
+Claim: Check in order: Potato open, A1 picked, A1 lit, Restart Audio Engine.
+Source: parent tutorial.
+
+Section: Quick reference card
+Claim: The whole setup on one tear-off page to keep by the computer.
+Source: synthesis of steps above.

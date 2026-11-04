@@ -26,16 +26,19 @@ trainees see in print matches exactly what they see on their PC.
 
 | Folder | Contents |
 | --- | --- |
-| `handout/` | The printable PDF handout. `-v1`, `-v2` are frozen versions; the un-suffixed file is always the current version (currently v2). |
+| `handout/` | The printable PDF handout. `-v1`, `-v2`, `-v3` are frozen versions; the un-suffixed file is always the current version (currently v3). |
+| `docs/` | `ERROR_CHECK.md` — the v2 handout checked claim-by-claim against the official Potato 3.1.3.0 manual: what was verified, the four v3 fixes, and what still needs a real Windows PC. |
 | `images/source-screenshots/` | Full original screenshots the handout pictures were taken from. |
 | `images/button-crops/` | Tight crops of the very buttons the steps reference (A1, Set Default, OK, Menu, strip A1/B1 columns, …), plus the annotated Sound dialog. |
 | `images/page-previews/` | A PNG render of every handout page (current version). |
-| `source/v1/`, `source/v2/` | The build source (HTML + outline) that produced each PDF version. |
+| `source/v1/`, `source/v2/`, `source/v3/` | The build source (HTML + outline) that produced each PDF version. |
 
 ## Status / known limitations
 
-- **Not yet trainee-tested or fully error-checked** against the official manual.
-  That check is the next step before using this with a real class.
+- **Error-checked 2026-11-04** against the official Voicemeeter Potato 3.1.3.0
+  user manual — see `docs/ERROR_CHECK.md` (four fixes landed in v3).
+  **Not yet trainee-tested, and never run live on a real Windows PC** — that
+  run-through is still the next step before using this with a real class.
 - The VoiceMeeter Potato pictures and the Windows Sound dialog are real
   screenshots. Steps 1–2 (download ZIP, Extract All / Run as administrator /
   Install) are still labelled diagrams — no trustworthy real screenshot of the

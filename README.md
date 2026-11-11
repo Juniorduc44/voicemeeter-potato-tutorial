@@ -26,12 +26,12 @@ trainees see in print matches exactly what they see on their PC.
 
 | Folder | Contents |
 | --- | --- |
-| `handout/` | The printable PDF handout. `-v1`, `-v2`, `-v3` are frozen versions; the un-suffixed file is always the current version (currently v3). |
+| `handout/` | The printable PDF handout, built from `source/`. Earlier versions are kept as git tags (`v1`, `v2`, `v3`), not as files. |
 | `docs/` | `ERROR_CHECK.md` — the v2 handout checked claim-by-claim against the official Potato 3.1.3.0 manual: what was verified, the four v3 fixes, and what still needs a real Windows PC. |
 | `images/source-screenshots/` | Full original screenshots the handout pictures were taken from. |
 | `images/button-crops/` | Tight crops of the very buttons the steps reference (A1, Set Default, OK, Menu, strip A1/B1 columns, …), plus the annotated Sound dialog. |
 | `images/page-previews/` | A PNG render of every handout page (current version). |
-| `source/v1/`, `source/v2/`, `source/v3/` | The build source (HTML + outline) that produced each PDF version. |
+| `source/` | The single working build source: `index.html` (the handout) and `OUTLINE.md` (claim-by-claim outline with sources and edit log). Started from v3. |
 
 ## Status / known limitations
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — 2026-11-11 (single working version)
+- Consolidated on v3: `source/v3/` moved to `source/`; `source/v1/`, `source/v2/`
+  and the `-v1`/`-v2`/`-v3` PDFs removed. The un-suffixed handout PDF is the current build.
+- Old versions preserved as git tags: `v1` and `v2` (commit bbbe45f, where both were
+  added together) and `v3` (commit 870095a).
+
 ## v3 — 2026-11-04 (manual-based polish + error-check)
 Checked line-by-line against the official *User Manual — Voicemeeter Potato 3.1.3.0*.
 Full log: `docs/ERROR_CHECK.md`. Four fixes, nothing else changed:

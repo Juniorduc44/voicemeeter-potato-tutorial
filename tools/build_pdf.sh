@@ -4,8 +4,9 @@
 # previews are 150 dpi PNGs (1275x1650) made with pdftoppm.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-PDF=handout/voicemeeter-potato-grandma-proof-handout.pdf
+PDF=handout/voicemeeter-potato-sop.pdf
 CHROME=${CHROME:-google-chrome}
+python3 tools/paginate.py
 "$CHROME" --headless --disable-gpu --no-sandbox --no-pdf-header-footer \
   --allow-file-access-from-files --print-to-pdf="$PDF" "file://$PWD/source/index.html"
 rm -f images/page-previews/page-*.png

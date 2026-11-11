@@ -1,5 +1,27 @@
 # Changelog
 
+## Unreleased — 2026-11-12 (full SOP) — branch `know-your-mixer`
+- Renamed to **VoiceMeeter Potato - Setup and Training SOP**; PDF is now
+  `handout/voicemeeter-potato-sop.pdf`. All "GrandMa" wording removed from the handout
+  (cover, pages, footers, PDF title / metadata); README describes the internal authoring
+  standard neutrally.
+- New Contents page and 16 Part 2 "in depth" pages (Menu item by item, VBAN, Audio Map,
+  INTELLIPAN, strip EQ + Strip Menu, Comp / Gate / Denoiser, sends / meter / fader / buttons,
+  virtual-strip latency / EQ, pan / apps / M.C / K, HARDWARE OUT readout + picking A1,
+  Recorder Options, Reverb panel, Delay panel + C5, 14 bus modes + SEL, bus EQ / returns /
+  limiter / names, mouse-and-keyboard cheat sheet). 29 → 46 pages.
+- 35 zoomed control crops (`images/control-crops/`, `tools/make_button_crops.py`) and
+  numbered step-by-step visuals for multi-step actions; 13 more labelled manual figures.
+- 1A: the icon next to VBAN is now explained (Windows Audio Map, [P] p.52).
+- `tools/paginate.py` numbers footers and fills the contents; run by `build_pdf.sh`.
+
+## Unreleased — 2026-11-12 (real captures) — branch `know-your-mixer`
+- Part 2 crops regenerated from the user's own Windows 10 VM captures of Potato 3.1.3.0
+  (stitched full window for the map, 1.5x zoom captures for section crops); manual
+  figures kept only for things not visible on the closed window, labelled.
+- Tables / captions follow the real screen (Stereo Input 1, 7168 L, 48kHz | 512,
+  Internal Master CLOCK, 11 ms).
+
 ## Unreleased — 2026-11-11 (Part 2: Know Your Mixer) — branch `know-your-mixer`
 - New **Part 2 — Know Your Mixer**, 15 pages after Way 3 (before the no-sound checklist):
   a map page (whole window, sections 1–7) and two pages per section — top bar, hardware

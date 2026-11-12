@@ -1,5 +1,13 @@
 # Changelog
 
+## Unreleased — 2026-11-12 (Menu from real capture) — branch `know-your-mixer`
+- Menu item-by-item reference is now 2 pages, matching the user's real Win10 Menu exactly
+  (wording, order, shortcut keys); new rows for Run other Voicemeeter tools, Shortcut Key
+  (Hook), Preset Scene, Tape Recorder Options, VBAN Chat Room, Windows Audio Map, Windows
+  Audio Settings, Online Help / Support. Unknown submenu contents are stated as such.
+- Cheat sheet: keyboard shortcuts block. Step 3 now says "Run on Windows Startup" only.
+- 46 -> 47 pages.
+
 ## Unreleased — 2026-11-12 (full SOP) — branch `know-your-mixer`
 - Renamed to **VoiceMeeter Potato - Setup and Training SOP**; PDF is now
   `handout/voicemeeter-potato-sop.pdf`. All "GrandMa" wording removed from the handout

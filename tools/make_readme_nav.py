@@ -31,12 +31,12 @@ quick = [
  ('📋', 'Quick reference card', 'Print it and keep it by the computer.', find('Quick reference')),
 ]
 o = []
-o.append(f'''<table align="center"><tr>
-<td valign="middle" align="center"><img src="images/ui/arrow-left-off.svg" width="84" alt=""></td>
-<td align="center"><a href="flipbook/pages/page-01.md"><img src="images/page-previews/page-01.png" width="380" alt="Cover of the SOP - click to start reading"></a></td>
-<td valign="middle" align="center"><a href="flipbook/pages/page-02.md" title="Next: page 2 - Contents"><img src="images/ui/arrow-right-on.svg" width="84" alt="Next page"></a></td>
-</tr></table>
-<p align="center"><b>➡️ <a href="flipbook/pages/page-02.md">Click the big arrow to flip through the SOP, page by page</a></b><br><sub>Every page has the same arrows on both sides - right on GitHub, nothing to download.</sub></p>
+o.append(f'''<p align="center">
+  <a href="{FB}"><img src="images/page-previews/page-01.png" width="380" alt="Cover of the SOP - click to flip through it"></a>
+</p>
+
+<h2 align="center"><a href="{FB}">📖 Click Here to Flip Through</a></h2>
+<p align="center"><sub>Opens the interactive flipbook: turn the pages right there with the big arrows, your ← → keys or a swipe. Nothing to download.</sub></p>
 
 <h3 align="center">Learn VoiceMeeter Potato on Windows - one click at a time.</h3>
 <p align="center">{N} illustrated pages · real screenshots · every button explained · nothing to install to read it</p>
@@ -44,7 +44,6 @@ o.append(f'''<table align="center"><tr>
 <p align="center">
   <a href="{FB}"><b>📖 Open the interactive flipbook</b></a> &nbsp;·&nbsp;
   <a href="handout/voicemeeter-potato-sop.pdf"><b>⬇️ Download the PDF</b></a> &nbsp;·&nbsp;
-  <a href="flipbook/pages/page-01.md"><b>➡️ Flip page by page on GitHub</b></a> &nbsp;·&nbsp;
   <a href="#browse-every-page">🖼️ Browse every page below</a>
 </p>
 
@@ -55,9 +54,9 @@ o.append(f'''<table align="center"><tr>
 o.append('## 🧭 Quick navigation\n')
 o.append('| | Go to | What you get | Page | Open |\n| --- | --- | --- | :-: | --- |')
 for ic, name, what, n in quick:
-    o.append(f'| {ic} | **[{name}]({prev(n)})** | {what} | {n} | [▶ open](flipbook/pages/page-{n:02d}.md) · [picture]({prev(n)}) · [flipbook]({flip(n)}) |')
-o.append(f'\n*"▶ open" shows that page on GitHub with big ⬅️ ➡️ arrows to keep flipping; "picture" is the page image alone; "flipbook" opens the interactive page-turner. The full contents list is on [page {find("Contents")}]({prev(find("Contents"))}).*\n')
-o.append('<a id="browse-every-page"></a>\n\n## 🖼️ Browse every page\n\nClick a group to open it, then click any page to open it with big ⬅️ ➡️ arrows for flipping on. No download needed.\n')
+    o.append(f'| {ic} | **[{name}]({prev(n)})** | {what} | {n} | [picture]({prev(n)}) · [flipbook]({flip(n)}) |')
+o.append(f'\n*"picture" opens that page right here on GitHub; "flipbook" opens it in the page-turner. The full contents list is on [page {find("Contents")}]({prev(find("Contents"))}).*\n')
+o.append('<a id="browse-every-page"></a>\n\n## 🖼️ Browse every page\n\nClick a group to open it, then click any page to see it full size. No download needed.\n')
 groups = []
 for p in pages:
     if not groups or groups[-1][0] != p['group']: groups.append((p['group'], []))
@@ -85,7 +84,7 @@ for g, ps in out:
     o.append('<table>')
     for i in range(0, len(ps), 4):
         row = ps[i:i+4]
-        o.append('<tr>' + ''.join(f'<td align="center" valign="top" width="25%"><a href="flipbook/pages/page-{p["n"]:02d}.md"><img src="images/page-thumbs/page-{p["n"]:02d}.jpg" width="150" alt="Page {p["n"]}: {p["title"]}"></a><br><sub><b>{p["n"]}</b> · {p["title"]}</sub></td>' for p in row) + '</tr>')
+        o.append('<tr>' + ''.join(f'<td align="center" valign="top" width="25%"><a href="{prev(p["n"])}"><img src="images/page-thumbs/page-{p["n"]:02d}.jpg" width="150" alt="Page {p["n"]}: {p["title"]}"></a><br><sub><b>{p["n"]}</b> · {p["title"]}</sub></td>' for p in row) + '</tr>')
     o.append('</table>\n</details>\n')
 o.append(f'''## 📖 The flipbook
 

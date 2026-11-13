@@ -51,7 +51,7 @@ o.append(f'''<p align="center">
 
 > **New here?** Read page {L(find("The one idea"))} (*the one idea*), then do Steps 1-6 in order (pages {L(find("Step 1"))}-{L(find("Step 6"))}).
 > Each step is one page with a picture and a green **CHECK** box - tick it before you turn the page.
-> Stuck with no sound? Jump straight to the [No-sound checklist]({flip(find("No-sound"))}) (page {L(find("No-sound"))}).
+> Stuck with no sound? Jump straight to the No-sound checklist (page {L(find("No-sound"))}).
 > *Every page number in this README is a link - click it to open that page in the flipbook.*
 ''')
 o.append('## 🧭 Quick navigation\n')

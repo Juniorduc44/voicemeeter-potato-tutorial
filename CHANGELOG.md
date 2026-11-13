@@ -13,6 +13,9 @@
 - README hero: cover shown twice as large (380 px, from the full-size preview), linking to the
   flipbook, with a prominent **Click Here to Flip Through** link. (A short-lived page-by-page
   markdown reader with arrow images was removed again - flipping happens in the flipbook.)
+- README: every page number is a link that opens that page in the flipbook (`#page=N`) -
+  newcomer note, Quick navigation "Page" column, contents mention, gallery group ranges and
+  thumbnail captions, the Part 2 range and the deep-link example.
 - Flipbook: large always-visible ⬅️ / ➡️ buttons beside the page (dimmed at the first / last page).
 
 ## Unreleased — 2026-11-12 (Menu from real capture) — branch `know-your-mixer`

@@ -13,6 +13,8 @@ def find(prefix):
     return next(n for n, t in T.items() if t.startswith(prefix))
 def prev(n): return f'images/page-previews/page-{n:02d}.png'
 def flip(n): return f'{FB}#page={n}'
+def L(n): return f'[{n}]({flip(n)})'            # markdown: the page number itself is the link
+def A(n): return f'<a href="{flip(n)}">{n}</a>'  # same, for HTML blocks
 quick = [
  ('🚀', 'Start here - the one idea', 'What Potato does, in one picture: A = your ears, B = other people.', find('The one idea')),
  ('⬇️', 'Install (Steps 1-2)', 'Download from the official site, install, restart.', find('Step 1')),
@@ -47,15 +49,16 @@ o.append(f'''<p align="center">
   <a href="#browse-every-page">🖼️ Browse every page below</a>
 </p>
 
-> **New here?** Read page {find("The one idea")} (*the one idea*), then do Steps 1-6 in order (pages {find("Step 1")}-{find("Step 6")}).
+> **New here?** Read page {L(find("The one idea"))} (*the one idea*), then do Steps 1-6 in order (pages {L(find("Step 1"))}-{L(find("Step 6"))}).
 > Each step is one page with a picture and a green **CHECK** box - tick it before you turn the page.
-> Stuck with no sound? Jump straight to the [No-sound checklist (page {find("No-sound")})]({prev(find("No-sound"))}).
+> Stuck with no sound? Jump straight to the [No-sound checklist]({flip(find("No-sound"))}) (page {L(find("No-sound"))}).
+> *Every page number in this README is a link - click it to open that page in the flipbook.*
 ''')
 o.append('## 🧭 Quick navigation\n')
 o.append('| | Go to | What you get | Page | Open |\n| --- | --- | --- | :-: | --- |')
 for ic, name, what, n in quick:
-    o.append(f'| {ic} | **[{name}]({prev(n)})** | {what} | {n} | [picture]({prev(n)}) · [flipbook]({flip(n)}) |')
-o.append(f'\n*"picture" opens that page right here on GitHub; "flipbook" opens it in the page-turner. The full contents list is on [page {find("Contents")}]({prev(find("Contents"))}).*\n')
+    o.append(f'| {ic} | **[{name}]({prev(n)})** | {what} | {L(n)} | [picture]({prev(n)}) · [flipbook]({flip(n)}) |')
+o.append(f'\n*"picture" opens that page right here on GitHub; "flipbook" opens it in the page-turner. The full contents list is on page {L(find("Contents"))}.*\n')
 o.append('<a id="browse-every-page"></a>\n\n## 🖼️ Browse every page\n\nClick a group to open it, then click any page to see it full size. No download needed.\n')
 groups = []
 for p in pages:
@@ -79,23 +82,22 @@ for g, ps in out:
     label = g
     for k, v in names.items():
         if g.endswith(k): label = f'{g} - {v}'
-    rng = f'page {ps[0]["n"]}' if len(ps) == 1 else f'pages {ps[0]["n"]}-{ps[-1]["n"]}'
+    rng = f'page {A(ps[0]["n"])}' if len(ps) == 1 else f'pages {A(ps[0]["n"])}-{A(ps[-1]["n"])}'
     o.append(f'<details>\n<summary><b>{label}</b> ({rng})</summary>\n<br>\n')
     o.append('<table>')
     for i in range(0, len(ps), 4):
         row = ps[i:i+4]
-        o.append('<tr>' + ''.join(f'<td align="center" valign="top" width="25%"><a href="{prev(p["n"])}"><img src="images/page-thumbs/page-{p["n"]:02d}.jpg" width="150" alt="Page {p["n"]}: {p["title"]}"></a><br><sub><b>{p["n"]}</b> · {p["title"]}</sub></td>' for p in row) + '</tr>')
+        o.append('<tr>' + ''.join(f'<td align="center" valign="top" width="25%"><a href="{prev(p["n"])}"><img src="images/page-thumbs/page-{p["n"]:02d}.jpg" width="150" alt="Page {p["n"]}: {p["title"]}"></a><br><sub><b>{A(p["n"])}</b> · {p["title"]}</sub></td>' for p in row) + '</tr>')
     o.append('</table>\n</details>\n')
 o.append(f'''## 📖 The flipbook
 
 [`index.html`](index.html) is a page-turner for the whole SOP: single page or two-page spread,
 big ⬅️ ➡️ arrows beside the page, Prev / Next buttons, ← → keys, swipe on phones, click the page edges, a contents sidebar with
 thumbnails, a jump-to-page menu, zoom, light / dark mode and a Download PDF button.
-Deep links work: `{FB}#page=14` opens the mixer map; add `?view=spread` for the two-page view.
+Deep links work: [`{FB}#page={find("Know Your Mixer")}`]({flip(find("Know Your Mixer"))}) opens the mixer map (page {L(find("Know Your Mixer"))}); add `?view=spread` for the two-page view.
 
 It is a plain static page (no build step) that shows the page pictures in `images/page-previews/`.
-It goes live at **{FB}** once GitHub Pages is turned on for this repo
-(Settings → Pages → *Deploy from a branch* → `main` / `/ (root)`). To try it locally:
+It is live at **<{FB}>** (GitHub Pages: *Deploy from a branch* → `main` / `/ (root)`). To try it locally:
 `python3 -m http.server` in the repo folder, then open <http://localhost:8000/>.
 ''')
 block = '\n'.join(o)

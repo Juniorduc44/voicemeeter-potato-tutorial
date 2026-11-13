@@ -10,6 +10,11 @@
   thumbnails, jump menu, zoom, light / dark, Download PDF, `#page=N` deep links.
   `.nojekyll` added for GitHub Pages.
 - `build_pdf.sh` now also runs `make_flipbook.py` and `make_readme_nav.py`.
+- README hero: cover shown twice as large (380 px, from the full-size preview) between big
+  ⬅️ / ➡️ arrow buttons; the right arrow starts a page-by-page reader on GitHub
+  (`flipbook/pages/page-NN.md`, 47 pages, big arrows both sides, works without GitHub Pages).
+  Quick-navigation "▶ open" links and gallery thumbnails open that reader.
+- Flipbook: large always-visible ⬅️ / ➡️ buttons beside the page (dimmed at the first / last page).
 
 ## Unreleased — 2026-11-12 (Menu from real capture) — branch `know-your-mixer`
 - Menu item-by-item reference is now 2 pages, matching the user's real Win10 Menu exactly

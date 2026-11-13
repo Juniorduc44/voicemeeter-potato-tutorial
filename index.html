@@ -38,17 +38,19 @@ main{flex:1;position:relative;overflow:auto;display:flex;flex-direction:column;a
 .sheet.turnL{opacity:0;transform:translateX(-18px)}
 .sheet.turnR{opacity:0;transform:translateX(18px)}
 .spread .sheet:first-child{border-right:1px solid #cfd8de}
-.hit{position:absolute;top:0;bottom:44px;width:22%;cursor:pointer;z-index:2}
+.hit{position:absolute;top:0;bottom:56px;width:120px;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
 .hit.l{left:0}.hit.r{right:0}
-.hit:hover::after{content:"";position:absolute;top:50%;width:44px;height:44px;margin-top:-22px;border-radius:50%;background:rgba(14,124,123,.85) center/22px no-repeat}
-.hit.l:hover::after{left:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M15 4l-8 8 8 8'/%3E%3C/svg%3E")}
-.hit.r:hover::after{right:14px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M9 4l8 8-8 8'/%3E%3C/svg%3E")}
+.hit span{width:76px;height:76px;border-radius:50%;background:var(--accent) center/38px no-repeat;border:4px solid #fff;box-shadow:var(--shadow);opacity:.9;transition:transform .12s,opacity .12s}
+.hit:hover span{opacity:1;transform:scale(1.08)}
+.hit.l span{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 4l-8 8 8 8'/%3E%3C/svg%3E")}
+.hit.r span{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 4l8 8-8 8'/%3E%3C/svg%3E")}
+.hit.off{pointer-events:none}.hit.off span{opacity:.18;filter:grayscale(1)}
 .stage.zoomed~.hit{display:none}
 footer{position:sticky;bottom:0;width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:7px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(4px);z-index:3}
 .count{min-width:150px;text-align:center;color:var(--muted);font-variant-numeric:tabular-nums}
 .ttl{font-weight:600;color:var(--ink)}
 .help{color:var(--muted);font-size:12px}
-@media (max-width:820px){aside{position:absolute;z-index:5;top:0;bottom:0;box-shadow:var(--shadow)}aside:not(.open){display:none}.hide-sm{display:none}header{gap:6px;padding:6px 8px}header h1{display:none}.grow{display:none}#tocBtn .lbl{display:none}select{flex:1;min-width:0;max-width:none}#viewBtn{display:none}.btn{padding:6px 9px}#dl .lbl{display:none}.stage{padding:8px}footer{gap:6px}.count{min-width:0;flex:1}.ttl{font-size:12px}}
+@media (max-width:820px){aside{position:absolute;z-index:5;top:0;bottom:0;box-shadow:var(--shadow)}aside:not(.open){display:none}.hide-sm{display:none}header{gap:6px;padding:6px 8px}header h1{display:none}.grow{display:none}#tocBtn .lbl{display:none}select{flex:1;min-width:0;max-width:none}#viewBtn{display:none}.btn{padding:6px 9px}#dl .lbl{display:none}.stage{padding:8px}.hit{width:60px}.hit span{width:50px;height:50px;background-size:26px;border-width:3px}footer{gap:6px}.count{min-width:0;flex:1}.ttl{font-size:12px}}
 </style>
 </head>
 <body>
@@ -68,8 +70,8 @@ footer{position:sticky;bottom:0;width:100%;display:flex;align-items:center;justi
 <aside id="toc" class="toc"></aside>
 <main id="main">
 <div class="stage" id="stage"></div>
-<div class="hit l" id="hitL" title="Previous page"></div>
-<div class="hit r" id="hitR" title="Next page"></div>
+<div class="hit l" id="hitL" title="Previous page (Left arrow)" role="button" aria-label="Previous page"><span></span></div>
+<div class="hit r" id="hitR" title="Next page (Right arrow)" role="button" aria-label="Next page"><span></span></div>
 <footer>
 <button class="btn" id="first" title="First page (Home)" aria-label="First page">&laquo;</button>
 <button class="btn" id="prev" title="Previous (Left arrow)">&lsaquo; Prev</button>
@@ -103,7 +105,7 @@ if (innerWidth <= 820) $('toc').classList.remove('open');
 const shown = () => !spread ? [page] : page === 1 ? [1] : (page % 2 === 0 ? [page, page+1] : [page-1, page]).filter(n => n >= 1 && n <= N);
 function size(){
   const r = stage.getBoundingClientRect(), k = shown().length, ar = 1275/1650;
-  const pad = innerWidth <= 820 ? 16 : 36, h = Math.max(200, main.clientHeight - pad - 52), w = Math.max(160, main.clientWidth - pad);
+  const sm = innerWidth <= 820, h = Math.max(200, main.clientHeight - (sm ? 16 : 36) - 52), w = Math.max(160, main.clientWidth - (sm ? 16 : 260));
   let ph = Math.min(h, w / (k * ar));
   if (zoom) ph = ph * zoom;
   stage.querySelectorAll('img').forEach(i => { i.style.height = ph + 'px'; i.style.width = ph * ar + 'px'; });
@@ -122,6 +124,7 @@ function render(dir){
   $('jump').value = s[0];
   $('prev').disabled = $('first').disabled = s[0] === 1;
   $('next').disabled = $('last').disabled = last === N;
+  $('hitL').classList.toggle('off', s[0] === 1); $('hitR').classList.toggle('off', last === N);
   document.querySelectorAll('.toc a').forEach(a => { const on = s.includes(+a.dataset.n); a.classList.toggle('on', on); if (on && dir !== undefined) a.scrollIntoView({block:'nearest'}); });
   history.replaceState(null, '', location.pathname + location.search + '#page=' + s[0]);
   [last+1, last+2, s[0]-1].forEach(n => { if (n >= 1 && n <= N) new Image().src = IMG(n); });

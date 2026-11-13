@@ -1,5 +1,16 @@
 # Changelog
 
+## Unreleased — 2026-11-13 (README navigation + flipbook) — `main`
+- README: welcome header, Quick navigation table (15 newcomer destinations with page
+  number, on-GitHub picture link and flipbook link), and a "Browse every page" gallery in
+  collapsible groups (Start, Part 1, each Part 2 section, cheat sheet, help) with thumbnails.
+  Generated from the built SOP by `tools/make_readme_nav.py`, so page numbers stay right.
+- Interactive flipbook `index.html` (+ `flipbook/pages.js`, `images/page-thumbs/`): single /
+  two-page spread, Prev / Next, arrow keys, swipe, click page edges, contents sidebar with
+  thumbnails, jump menu, zoom, light / dark, Download PDF, `#page=N` deep links.
+  `.nojekyll` added for GitHub Pages.
+- `build_pdf.sh` now also runs `make_flipbook.py` and `make_readme_nav.py`.
+
 ## Unreleased — 2026-11-12 (Menu from real capture) — branch `know-your-mixer`
 - Menu item-by-item reference is now 2 pages, matching the user's real Win10 Menu exactly
   (wording, order, shortcut keys); new rows for Run other Voicemeeter tools, Shortcut Key

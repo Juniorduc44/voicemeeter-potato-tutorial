@@ -12,3 +12,5 @@ python3 tools/paginate.py
 rm -f images/page-previews/page-*.png
 pdftoppm -r 150 -png "$PDF" images/page-previews/page
 echo "pages: $(pdfinfo "$PDF" | awk '/^Pages/{print $2}')"
+python3 tools/make_flipbook.py
+python3 tools/make_readme_nav.py
